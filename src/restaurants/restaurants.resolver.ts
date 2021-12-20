@@ -12,16 +12,24 @@ export class RestaurantsResolver {
     return this.restaurantService.getAll();
   }
   @Mutation((returns) => Boolean)
-  createRestaurant(
+  async createRestaurant(
     // @Args('name') name: string,
     // @Args('isVegan') isVegan: string,
     // @Args('address') address: string,
     // @Args('ownersName') ownersName: string,
     // we can't create input type basically allows u whole objects instead of
     // @Args('createRestaurantInput') createRestaurantInput: CreateRestaurantDto,
-    @Args() createRestaurantDto: CreateRestaurantDto,
-  ): boolean {
+    @Args('input') createRestaurantDto: CreateRestaurantDto,
+    // ): boolean {
+  ): Promise<boolean> {
     console.log(createRestaurantDto);
-    return true;
+    // return true;
+    try {
+      await this.restaurantService.createRestaurant(createRestaurantDto);
+      return true;
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
   }
 }
