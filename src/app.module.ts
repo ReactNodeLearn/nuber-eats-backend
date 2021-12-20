@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { RestaurantsModule } from './restaurants/restaurants.module';
 import { Restaurant } from './restaurants/entities/restaurant.entity';
+import { UsersModule } from './users/users.module';
 // console.log(Joi);
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { Restaurant } from './restaurants/entities/restaurant.entity';
       autoSchemaFile: true,
     }),
     RestaurantsModule,
+    UsersModule,
   ],
   controllers: [],
   providers: [],
